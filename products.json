@@ -2,11 +2,36 @@
     {
         "name": "Product 4",
         "price": "79.99",
-        "image": "images/product3.png"
+        "image": "images/product1.png"
     },
         {
         "name": "Product 4",
         "price": "79.99",
+        "image": "images/product2.png"
+    },
+            {
+        "name": "Product 4",
+        "price": "79.99",
+        "image": "images/product3.png"
+    },
+            {
+        "name": "Product 4",
+        "price": "79.99",
+        "image": "images/product4.jpg"
+    },
+            {
+        "name": "Product 4",
+        "price": "79.99",
         "image": "images/product1.png"
+    }
+            {
+        "name": "Product 4",
+        "price": "79.99",
+        "image": "images/product2.png"
+    },
+            {
+        "name": "Product 4",
+        "price": "79.99",
+        "image": "images/product4.jpg"
     }
 ]
