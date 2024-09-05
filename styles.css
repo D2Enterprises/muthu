@@ -1,0 +1,442 @@
+/* ------------ BASE STYLES ------------ */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: rgba(255, 255, 255, 0.1); /* Glass effect with transparency */
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ------------ BUTTON STYLES ------------ */
+.btn {
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  width: 60px;
+  height: 30px;
+  border-radius: 15px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 20px;
+}
+
+.btn__indicator {
+  background-color: rgba(255, 255, 255, 0.4); /* Semi-transparent background */
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  position: absolute;
+  left: 2px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn__icon-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn__icon {
+  color: var(--icon-color);
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+/* ------------ DARK MODE STYLES ------------ */
+body.darkmode {
+  --background-color: rgba(0, 0, 0, 0.9); /* Dark glass effect */
+  --text-color: #ffffff;
+  --primary-color: #777777;
+  --button-background: rgba(0, 0, 0, 0.5); /* Darker semi-transparent background */
+  --button-text-color: #ffffff;
+  --icon-color: #ffffff;
+  --dynamic-island-bg: rgba(43, 43, 43, 0.9);
+  --dynamic-island-bg-remove: #000000;
+}
+
+body.darkmode .btn__indicator {
+  transform: translateX(30px);
+}
+
+body.darkmode .btn__icon {
+  color: var(--icon-color);
+}
+
+body.darkmode .product-card,
+body.darkmode .cart-item {
+  background-color: rgba(58, 58, 58, 0.7); /* Dark glass effect */
+}
+
+body.darkmode .add-to-cart-btn,
+body.darkmode .cart-item-controls button {
+  background-color: #555555;
+  color: #ffffff;
+}
+
+body.darkmode .add-to-cart-btn:hover,
+body.darkmode .cart-item-controls button:hover {
+  background-color: #777777;
+}
+
+/* ------------ PAGE STYLES ------------ */
+.page {
+  width: 100%;
+  padding: 20px;
+  padding-top: 70px; /* Adjusted to account for fixed top-container height */
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px; /* Increased font size for headers */
+}
+
+.products, .cart-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.product-card, .cart-item {
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 2;
+}
+
+.product-card:hover, .cart-item:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.product-card h2 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.product-card p, .cart-item-price {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.add-to-cart-btn, .cart-item-controls button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--primary-color);
+  color: var(--button-text-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover, .cart-item-controls button:hover {
+  background-color: #000000;
+}
+
+/* ------------ NAVIGATION DOCK ------------ */
+.dock {
+  width: 360px;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  border-radius: 35px;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+  z-index: 10;
+}
+
+body.darkmode .dock {
+  background: rgba(43, 43, 43, 0.9); /* Darker glass effect */
+}
+
+.dock-item {
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dock-item i {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.dock-item:hover {
+  color: var(--primary-color);
+}
+
+body.darkmode .dock-item {
+  color: var(--text-color);
+}
+
+body.darkmode .dock-item:hover {
+  color: var(--primary-color);
+}
+
+/* ------------ DYNAMIC ISLAND ------------ */
+.dynamic-island {
+  position: fixed;
+  top: 20px;
+  width: 300px;
+  height: 60px;
+  background-color: var(--dynamic-island-bg);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  color: var(--dynamic-island-text);
+  transition: transform 0.6s ease, opacity 0.4s ease, background-color 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100px) scale(0.5);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 20;
+}
+
+.dynamic-island.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.dynamic-island.remove-item {
+  background-color: var(--dynamic-island-bg-remove);
+  color: #ffffff;
+}
+
+.dynamic-island .message {
+  font-size: 1rem;
+}
+
+/* ------------ CART SUMMARY ------------ */
+#cart-summary {
+  margin-top: 20px;
+  text-align: center;
+  z-index: 15;
+}
+
+#buy-now-btn {
+  background: var(--primary-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+#buy-now-btn:hover {
+  background: #000000;
+}
+
+body.darkmode #buy-now-btn:hover {
+  background: #777777;
+}
+
+/* ------------ SEARCH SIDEBAR ------------ */
+.search-sidebar-container {
+  width: 360px;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  border-radius: 35px;
+  position: fixed;
+  top: 10px; /* Adjusted to sit below the top container */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+body.darkmode .search-sidebar-container {
+  background: rgba(43, 43, 43, 0.9); /* Darker glass effect */
+}
+
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.search-bar-container input[type="text"] {
+  padding: 8px 12px;
+  border: 1px solid var(--primary-color);
+  border-radius: 20px;
+  width: 200px;
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.search-bar-container input[type="text"]::placeholder {
+  color: var(--text-color);
+}
+
+.search-bar-container button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.search-bar-container button i {
+  font-size: 1.2em;
+  color: var(--icon-color);
+}
+
+/* ------------ THEME SWITCHER BUTTON ------------ */
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-switcher #theme-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.theme-switcher #theme-btn .btn__icon {
+  font-size: 1.5em; /* Increased size for visibility */
+  color: var(--icon-color);
+  transition: color 0.3s ease;
+}
+
+.theme-switcher #theme-btn:hover .btn__icon {
+  color: var(--primary-color);
+}
+
+/* ------------ INPUT FIELDS ------------ */
+input, textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+  color: var(--text-color);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+/* ------------ MODAL STYLES ------------ */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.9); /* Slightly opaque background */
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 30;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.modal-header h2 {
+  font-size: 1.5rem;
+}
+
+.modal-header button {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* ------------ LOADING SPINNER ------------ */
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1); /* Light border */
+  border-top: 4px solid var(--primary-color); /* Spinner color */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ------------ BACKGROUND VIDEO STYLES ------------ */
+.background-video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* Ensure it is behind other content */
+}
+
+.background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the video covers the container */
+  transform: translate(-50%, -50%);
+}
