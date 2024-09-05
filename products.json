@@ -3,5 +3,10 @@
         "name": "Product 4",
         "price": "79.99",
         "image": "images/product3.png"
+    },
+        {
+        "name": "Product 4",
+        "price": "79.99",
+        "image": "images/product1.png"
     }
 ]
